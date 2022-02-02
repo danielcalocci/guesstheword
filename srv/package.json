@@ -1,0 +1,39 @@
+{
+  "name": "guesstheword-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "daniel.marcicano@outlook.com",
+  "license": "MIT",
+  "scripts": {
+    "start:prod": "node ./dist/server.js",
+    "start:dev": "ts-node-dev --respawn --ignore-watch node_modules src/server.ts",
+    "tsc": "./node_modules/typescript/bin/tsc",
+    "build": "tsc",
+    "copy-files": "node ./src/postbuild.js",
+    "postinstall": "npm run build && npm run copy-files"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/jest": "^27.0.3",
+    "@types/node": "^17.0.2",
+    "@typescript-eslint/eslint-plugin": "^5.8.0",
+    "@typescript-eslint/parser": "^5.8.0",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.2.0",
+    "typescript": "^4.5.4"
+  },
+  "dependencies": {
+    "@mailchimp/mailchimp_marketing": "^3.0.72",
+    "ts-node-dev": "^1.1.8",
+    "axios": "^0.24.0",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.2"
+  },
+  "engines": {
+    "node": ">=14.17.6"
+  }
+}
