@@ -1,6 +1,6 @@
-import * as dotenv from 'dotenv'
+import * as dotenv from 'dotenv';
 
-dotenv.config()
+dotenv.config();
 
 const Config = {
   application: {
@@ -14,6 +14,6 @@ const Config = {
     url: process.env.MOCKAPIURL as string
   }
 
-}
+};
 
-export default Config
+export default Config;

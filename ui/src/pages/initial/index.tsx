@@ -1,32 +1,32 @@
 import { useState } from 'react';
 import './style.css';
-import {InputText, Button, Link } from '../../shared/components'
+import {InputText, Button, Link } from '../../shared/components';
 const Initial = () => {
   
-  const [name, setName] = useState('')
+  const [name, setName] = useState('');
 
-  const [gameId, setGameId] = useState('')
+  const [gameId, setGameId] = useState('');
 
   const handleNewGame = () => {
     if (name) {
-      const gameId = 'createNewUniqueHash'
-      setGameId(gameId)
-      return `/scoreboard?name=${encodeURI(name)}&gameId=${gameId}`
+      const gameId = 'createNewUniqueHash';
+      setGameId(gameId);
+      return `/scoreboard?name=${encodeURI(name)}&gameId=${gameId}`;
 
     } else {
-      alert('Please we need your Name')
-      return ''
+      alert('Please we need your Name');
+      return '';
     }
-  }
+  };
 
   const handleJoinGame = () => {
     if (name && gameId) {
-      return `/scoreboard?name=${encodeURI(name)}&gameId=${gameId}`
+      return `/scoreboard?name=${encodeURI(name)}&gameId=${gameId}`;
     } else {
-      alert('Please we need your Name and Game Id')
-      return ''
+      alert('Please we need your Name and Game Id');
+      return '';
     }
-  }
+  };
   
   return (
     <div className='initial'>
@@ -60,6 +60,6 @@ const Initial = () => {
       </div>
     </div>
   );
-}
+};
 
 export default Initial;

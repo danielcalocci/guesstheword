@@ -1,5 +1,5 @@
-import Config from '../config/config'
-import { Contacts } from './mockApi'
+import Config from '../config/config';
+import { Contacts } from './mockApi';
 type SyncContacts = {
     'syncedContacts': number,
     'contacts':
@@ -17,20 +17,20 @@ class MailChimp {
     config: any;
 
     constructor () {
-      this.apiKey = Config.mailChimp.apiKey
-      this.serverPrefix = Config.mailChimp.serverPrefix
-      this.client = require('../../node_modules/@mailchimp/mailchimp_marketing')
+      this.apiKey = Config.mailChimp.apiKey;
+      this.serverPrefix = Config.mailChimp.serverPrefix;
+      this.client = require('../../node_modules/@mailchimp/mailchimp_marketing');
       this.config = {
         apiKey: this.apiKey,
         server: this.serverPrefix
-      }
-      this.client.setConfig(this.config)
+      };
+      this.client.setConfig(this.config);
     }
 
     async clearLists () {
-      const lists = await this.client.lists.getAllLists()
+      const lists = await this.client.lists.getAllLists();
       for (const list of lists.lists) {
-        await this.client.lists.deleteList(list.id)
+        await this.client.lists.deleteList(list.id);
       }
     }
 
@@ -60,13 +60,13 @@ class MailChimp {
         email_type_option: false,
         double_optin: false,
         marketing_permissions: false
-      })
-      return response.id
+      });
+      return response.id;
     }
 
     async setup () {
-      await this.clearLists()
-      return await this.addPersonalList()
+      await this.clearLists();
+      return await this.addPersonalList();
     }
 
     async addMember (listId: string, email: string, firstName: string, lastName: string) {
@@ -74,38 +74,38 @@ class MailChimp {
         email_address: email,
         status: 'subscribed',
         merge_fields: { FNAME: firstName, LNAME: lastName }
-      }
+      };
 
-      const response = await this.client.lists.addListMember(listId, member).catch((ex:any) => { return ex })
+      const response = await this.client.lists.addListMember(listId, member).catch((ex:any) => { return ex; });
       if (response.response?.statusCode) {
-        return { error: JSON.parse(response.response.text) }
+        return { error: JSON.parse(response.response.text) };
       } else {
-        return response
+        return response;
       }
     }
 
     async sync (contactsList: Contacts):Promise<SyncContacts> {
-      const newListId = await this.setup()
+      const newListId = await this.setup();
 
       const syncedContacts:SyncContacts = {
         syncedContacts: 0,
         contacts: []
-      }
+      };
 
       for (const contact of contactsList) {
-        const response = await this.addMember(newListId, contact.email, contact.firstName, contact.lastName)
+        const response = await this.addMember(newListId, contact.email, contact.firstName, contact.lastName);
         if (response.error) {
-          console.log(response)
+          console.log(response);
         } else {
-          syncedContacts.syncedContacts += 1
-          const contactSynced = { email: contact.email, firstName: contact.firstName, lastName: contact.lastName }
-          syncedContacts.contacts.push(contactSynced)
-          console.log(contactSynced)
+          syncedContacts.syncedContacts += 1;
+          const contactSynced = { email: contact.email, firstName: contact.firstName, lastName: contact.lastName };
+          syncedContacts.contacts.push(contactSynced);
+          console.log(contactSynced);
         }
       }
 
-      return syncedContacts
+      return syncedContacts;
     }
 }
 
-export default MailChimp
+export default MailChimp;

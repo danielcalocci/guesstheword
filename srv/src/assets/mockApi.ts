@@ -1,5 +1,5 @@
-import Config from '../config/config'
-import axios from 'axios'
+import Config from '../config/config';
+import axios from 'axios';
 
 export type Contacts = {
   'id':number
@@ -13,12 +13,12 @@ export type Contacts = {
 class MockApi {
     url: string;
     constructor () {
-      this.url = Config.mockApi.url
+      this.url = Config.mockApi.url;
     }
 
     async getContacts ():Promise<Contacts> {
-      const response = await axios.get(`${this.url}contacts`)
-      return response.data
+      const response = await axios.get(`${this.url}contacts`);
+      return response.data;
     }
 }
-export default MockApi
+export default MockApi;

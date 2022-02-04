@@ -5,32 +5,32 @@ import './style.css';
 type prop = {title: string, dataTest: string, route?: string, handleFunction?: () => string }
 
 const Button = ({title, dataTest, route, handleFunction}: prop) => {
-  let navigate = useNavigate();
-  const onclick = (e: any) =>{
+  const navigate = useNavigate();
+  const onclick = () =>{
     
       
     if (handleFunction) {
       const newRoute: string = handleFunction();
       if (newRoute) {
-        navigate(newRoute)
+        navigate(newRoute);
       }
     } else {
       if (route){
-        navigate(route)
+        navigate(route);
       }      
     }
-  } 
+  }; 
   return (
     <div className='button'>
       <button 
         data-test={dataTest}
         onClick={onclick}
-        >
-          {title}
-        </button>
+      >
+        {title}
+      </button>
     </div>
     
   );
-}
+};
 
 export default Button;
