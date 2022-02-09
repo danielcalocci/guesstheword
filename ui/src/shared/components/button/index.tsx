@@ -21,7 +21,7 @@ const Button = ({title, dataTest, route, handleFunction}: prop) => {
     }
   }; 
   return (
-    <div className='button'>
+    <div className="button">
       <button 
         data-test={dataTest}
         onClick={onclick}

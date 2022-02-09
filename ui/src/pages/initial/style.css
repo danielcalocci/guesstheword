@@ -1,10 +1,12 @@
 .initial {
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
+
 
 .initialContainer{
     display: flex;
@@ -12,17 +14,42 @@
     align-items: stretch;
     justify-content: center;
     width: 350px;
-    height: 350px;
+    height: auto;
+}
+
+@media only screen and (max-width: 600px) {
+    .initialContainer {
+        width: 80%;
+    }
 }
 
 .linkCreate {
     width: 100%;
     display: flex;
     justify-content: center;
+    font-size: 56px !important;
 }
 
 .linkCreate div {
     margin-top: 32px;
     text-decoration: none;
     font-size: 15px;
+}
+
+.lokiLogo {
+    width: 200px;
+}
+
+.logoLabel {
+    font-size: 56px;
+    font-family: 'SPHERE FEZ';
+}
+
+@media only screen and (max-width: 600px) {
+    .lokiLogo {
+        width: 150px;
+    }
+    .logoLabel {
+        font-size: 42px;
+    }
 }

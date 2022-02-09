@@ -1,5 +1,8 @@
-* {
+:global(*) {
   padding: 0px;
   margin: 0px;
   font-family: Arial, Helvetica, sans-serif;
+}
+body {
+  background-color: rgb(235, 235, 235);
 }

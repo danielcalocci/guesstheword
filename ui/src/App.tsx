@@ -4,6 +4,7 @@ import Initial from './pages/initial';
 import Gamer from './pages/gamer';
 import Guesser from './pages/guesser';
 import Scoreboard from './pages/scoreboard';
+import Choose from './pages/choose';
 import './globalStyle.css';
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <Route path="/gamer" element ={<Gamer />} />
         <Route path="/guesser" element ={<Guesser />} />
         <Route path="/scoreboard" element ={<Scoreboard />} />
+        <Route path="/choose" element ={<Choose />} />
       </Routes>
     </BrowserRouter>
   );

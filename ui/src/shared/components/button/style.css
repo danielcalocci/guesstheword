@@ -11,3 +11,15 @@
     margin-right: 5px;
     border-radius: 4px;    
 }
+
+@media only screen and (max-width: 600px) {
+    .button button {
+        width: calc(100% - 10px);
+        height: 32px;
+        border: 1px solid silver;
+        margin-top: 5px;
+        margin-left: 5px;
+        margin-right: 5px;
+        border-radius: 4px;    
+    }   
+}

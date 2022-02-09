@@ -1,13 +1,19 @@
 import React from 'react';
 import './style.css';
 
-// eslint-disable-next-line no-unused-vars
-type prop = {title: string, id: string, placeHolder: string, dataTest: string, setStateFn?:(value: string)=>void}
+type prop = {
+  id: string, 
+  placeHolder: string, 
+  dataTest: string, 
+  warning?: string,
+  // eslint-disable-next-line no-unused-vars
+  setStateFn?:(value: string)=>void
+}
 
-const InputText = ({title, id, placeHolder, dataTest,setStateFn}: prop) => {
+const InputText = ({ id, placeHolder, dataTest, warning, setStateFn}: prop) => {
   return (
-    <div className='inputText'>
-      <label htmlFor={id}>{title}</label>
+    <div className={ `inputText ${warning && 'inputWarning'}`} >
+      {warning && <div className="warning">{warning}</div>}
       <input 
         id={id} 
         type='text' 
